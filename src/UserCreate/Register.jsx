@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
 import google from "/src/assets/image/google.jpg";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../PrivateAuth/PrivateAuth";
 import auth from "../PrivateRouter/firebase.config";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import swal from "sweetalert";
 
 const Register = () => {
   const { userCreateAuth, upDateProfile } = useContext(AuthContext);
+  const [passError, setPassError] = useState("");
+
   const handleRegisterForm = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -16,12 +19,17 @@ const Register = () => {
     const password = form.password.value;
     console.log(name, photo, email, password);
 
+    setPassError("");
+    if (password.length < 6) {
+      setPassError("Please provide me a valid email and password!");
+    }
     userCreateAuth(email, password)
       .then((result) => {
         console.log(result.user);
         upDateProfile(name, photo).then(() => {
-          alert('Profile update complate!')
+          console.log("Profile update complate!");
         });
+        swal("Success!", "Register is complate!", "Success");
         form.reset();
       })
       .catch((error) => {
@@ -53,6 +61,7 @@ const Register = () => {
             name="name"
             id=""
             placeholder="Your Name"
+            required
           />
           <br />
           <input
@@ -61,6 +70,7 @@ const Register = () => {
             name="photo"
             id=""
             placeholder="PhotoURL"
+            required
           />
           <br />
           <input
@@ -69,6 +79,7 @@ const Register = () => {
             name="email"
             id=""
             placeholder="Email"
+            required
           />
           <br />
           <input
@@ -77,8 +88,10 @@ const Register = () => {
             name="password"
             id=""
             placeholder="Your Password"
+            required
           />
           <br />
+          {passError && <p className="text-red-600">{passError}</p>}
           <input
             className="py-2 rounded border w-full mt-5 pl-2 bg-purple-600 text-white"
             type="submit"

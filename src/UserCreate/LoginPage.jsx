@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import google from "/src/assets/image/google.jpg";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../PrivateAuth/PrivateAuth";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import auth from "../PrivateRouter/firebase.config";
+import swal from "sweetalert";
 
 const LoginPage = () => {
   const {loginUserAuth} = useContext(AuthContext);
+  const [passError, setPassError] = useState("");
 
   const handleLoginForm = (e) => {
     e.preventDefault();
@@ -15,9 +17,14 @@ const LoginPage = () => {
     const password = form.password.value;
     console.log(email, password);
     
+    setPassError('');
+    if (password.length < 6) {
+      setPassError("Please provide me a valid email and password!");
+    }
     loginUserAuth(email, password)
     .then(result => {
       console.log(result.user)
+      swal("Success!", "Register is complate!", "Success");
       form.reset();
     })
     .catch(error => {
@@ -49,14 +56,17 @@ const LoginPage = () => {
             name="email"
             id=""
             placeholder="Email"
+            required
           />
           <br />
+          {passError && <p className="text-red-600">{passError}</p>}
           <input
             className="py-2 rounded border w-full mt-3 pl-2"
             type="password"
             name="password"
             id=""
             placeholder="Your Password"
+            required
           />
           <br />
           <input

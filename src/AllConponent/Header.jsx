@@ -52,10 +52,10 @@ const Header = () => {
         {/* <div> */}
         {user && (
           <>
-            <NavLink className="mr-6 text-lg font-semibold" to="/card">
+            <NavLink className="mr-6 text-lg font-semibold" to="/productCreate">
               <li>Product Create</li>
             </NavLink>
-            <NavLink className="mr-6 text-lg font-semibold" to="/card">
+            <NavLink className="mr-6 text-lg font-semibold" to="/productAdd">
               <li>User Product</li>
             </NavLink>
           </>

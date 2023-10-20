@@ -4,6 +4,7 @@ import RootHome from "./RootHome";
 import HomeSection from "../AllConponent/HomeSection";
 import Register from "../UserCreate/Register";
 import LoginPage from "../UserCreate/LoginPage";
+import ProductCreate from "../PrivateNavbar/ProductCreate";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register></Register>,
       },
+      {
+        path: '/productCreate',
+        element: <ProductCreate></ProductCreate>
+      }
     ],
   },
 ]);
