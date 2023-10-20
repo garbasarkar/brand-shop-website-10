@@ -6,7 +6,7 @@ import auth from "../PrivateRouter/firebase.config";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const Register = () => {
-  const { userCreateAuth } = useContext(AuthContext);
+  const { userCreateAuth, upDateProfile } = useContext(AuthContext);
   const handleRegisterForm = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -19,6 +19,9 @@ const Register = () => {
     userCreateAuth(email, password)
       .then((result) => {
         console.log(result.user);
+        upDateProfile(name, photo).then(() => {
+          alert('Profile update complate!')
+        });
         form.reset();
       })
       .catch((error) => {

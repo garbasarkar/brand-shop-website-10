@@ -67,6 +67,10 @@ const Header = () => {
       </ul>
       <div className="flex gap-3 items-center">
         {user && (
+          <img className="w-10 h-10 rounded-full" src={user.photoURL}></img>
+        )}
+        {user && <p>{user.displayName}</p>}
+        {user && (
           <button
             onClick={signOutHandle}
             className="px-5 py-2 bg-purple-500 rounded text-white"
