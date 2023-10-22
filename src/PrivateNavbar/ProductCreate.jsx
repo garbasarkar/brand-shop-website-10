@@ -9,7 +9,8 @@ const ProductCreate = () => {
     const discription = form.discription.value;
     const price = form.price.value;
     const photo = form.photo.value;
-    console.log(name, brand, category, discription, price, photo);
+    const rating = form.rating.value;
+    console.log(name, brand, category, discription, price, photo, rating);
     const userOrder = {
       name,
       brand,
@@ -17,6 +18,7 @@ const ProductCreate = () => {
       discription,
       price,
       photo,
+      rating,
     };
     fetch(`http://localhost:5000/brand`, {
       method: "POST",
@@ -111,6 +113,21 @@ const ProductCreate = () => {
             <br />
           </div>
           <div className="w-1/2">
+            <label className="font-semibold text-lg">Rating</label>
+            <br />
+            <input
+              className="border py-2 rounded pl-2 w-5/6"
+              type="text"
+              name="rating"
+              id=""
+              placeholder="rating"
+              required
+            />{" "}
+            <br />
+          </div>
+          
+        </div>
+        <div className="w-full">
             <label className="font-semibold text-lg">PhotoURL</label>
             <br />
             <input
@@ -123,7 +140,6 @@ const ProductCreate = () => {
             />{" "}
             <br />
           </div>
-        </div>
         <div className=" mt-3">
           <div className="mx-auto flex justify-center"></div>
         </div>

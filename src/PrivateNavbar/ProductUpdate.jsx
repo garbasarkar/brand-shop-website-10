@@ -1,8 +1,10 @@
+import { rating } from "@material-tailwind/react";
 import { useLoaderData } from "react-router-dom";
 
 const ProductUpdate = () => {
   const loadedData = useLoaderData();
-  const { _id, name,brand, price, category, rating, discription, photo } = loadedData;
+  const { _id, name, brand, price, category, discription, photo, rating } =
+    loadedData;
   console.log(loadedData);
   const handleProductUpdate = (e) => {
     e.preventDefault();
@@ -13,7 +15,8 @@ const ProductUpdate = () => {
     const discription = form.discription.value;
     const price = form.price.value;
     const photo = form.photo.value;
-    console.log(name, brand, category, discription, price, photo);
+    const rating = form.rating.value;
+    console.log(name, brand, category, discription, price, photo, rating);
     const userOrder = {
       name,
       brand,
@@ -21,6 +24,7 @@ const ProductUpdate = () => {
       discription,
       price,
       photo,
+      rating,
     };
 
     fetch(`http://localhost:5000/brand/${_id}`, {
@@ -118,19 +122,33 @@ const ProductUpdate = () => {
             <br />
           </div>
           <div className="w-1/2">
-            <label className="font-semibold text-lg">PhotoURL</label>
+            <label className="font-semibold text-lg">Rating</label>
             <br />
             <input
-              className="border py-2 rounded pl-2 w-full"
+              className="border py-2 rounded pl-2 w-5/6"
               type="text"
-              name="photo"
+              name="rating"
               id=""
-              placeholder="ImageURL"
-              defaultValue={photo}
+              placeholder="Rating"
+              defaultValue={rating}
               required
             />{" "}
             <br />
           </div>
+        </div>
+        <div className="w-1/2">
+          <label className="font-semibold text-lg">PhotoURL</label>
+          <br />
+          <input
+            className="border py-2 rounded pl-2 w-full"
+            type="text"
+            name="photo"
+            id=""
+            placeholder="ImageURL"
+            defaultValue={photo}
+            required
+          />{" "}
+          <br />
         </div>
         <div className=" mt-3">
           <div className="mx-auto flex justify-center"></div>

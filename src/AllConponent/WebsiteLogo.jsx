@@ -8,12 +8,6 @@ const WebsiteLogo = () => {
       .then((res) => res.json())
       .then((data) => setDataStore(data));
   }, []);
-  //   console.log(dataStore);
-  // useEffect( () => {
-  //     fetch(`http://localhost:5000/brands/`)
-  // .then(res => res.json())
-  // .then(data => setDataStore(data))
-  // },[])
   return (
     <div className="max-w-6xl mx-auto text-center">
       <h1 className="text-3xl font-semibold mb-2">Service Brand Logo</h1>

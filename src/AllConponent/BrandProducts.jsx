@@ -72,7 +72,7 @@ const BrandProducts = () => {
                     </div>
                   </div>
                   <div className="flex justify-between items-center gap-5 mt-2">
-                    <Link to={`/brand/${product._id}`}>
+                    <Link to={`/brands/${product._id}`}>
                       <button className="text-white px-5 py-2 bg-fuchsia-600 rounded ">
                         Details
                       </button>
