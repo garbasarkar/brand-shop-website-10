@@ -5,6 +5,11 @@ import HomeSection from "../AllConponent/HomeSection";
 import Register from "../UserCreate/Register";
 import LoginPage from "../UserCreate/LoginPage";
 import ProductCreate from "../PrivateNavbar/ProductCreate";
+import UserProduct from "../PrivateNavbar/UserProduct";
+import ProductUpdate from "../PrivateNavbar/ProductUpdate";
+import ProductDetails from "../PrivateNavbar/ProductDetails";
+import BrandProducts from "../AllConponent/BrandProducts";
+
 
 const router = createBrowserRouter([
   {
@@ -25,8 +30,28 @@ const router = createBrowserRouter([
         element: <Register></Register>,
       },
       {
-        path: '/productCreate',
-        element: <ProductCreate></ProductCreate>
+        path: "/productCreate",
+        element: <ProductCreate></ProductCreate>,
+      },
+      {
+        path: "/productAdd",
+        element: <UserProduct></UserProduct>,
+        loader: () => fetch(`http://localhost:5000/brand`),
+      },
+      {
+        path: "/brand/:id",
+        element: <ProductDetails></ProductDetails>,
+        loader: ({ params }) => fetch(`http://localhost:5000/brand/${params.id}`),
+      },
+      {
+        path: "/brand/:id",
+        element: <ProductUpdate></ProductUpdate>,
+        loader: ({params}) => fetch(`http://localhost:5000/brand/${params.id}`),
+      },
+      {
+        path: '/image/:id',
+        element: <BrandProducts></BrandProducts>,
+        loader: ({params}) => fetch(`/WebLogo.json/${params.id}`)
       }
     ],
   },

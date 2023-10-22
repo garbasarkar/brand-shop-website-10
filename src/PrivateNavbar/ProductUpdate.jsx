@@ -1,6 +1,10 @@
-import swal from "sweetalert";
-const ProductCreate = () => {
-  const handleProduct = (e) => {
+import { useLoaderData } from "react-router-dom";
+
+const ProductUpdate = () => {
+  const loadedData = useLoaderData();
+  const { _id, name,brand, price, category, rating, discription, photo } = loadedData;
+  console.log(loadedData);
+  const handleProductUpdate = (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
@@ -18,8 +22,9 @@ const ProductCreate = () => {
       price,
       photo,
     };
-    fetch(`http://localhost:5000/brand`, {
-      method: "POST",
+
+    fetch(`http://localhost:5000/brand/${_id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
@@ -28,10 +33,7 @@ const ProductCreate = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if(data.insertedId){
-            swal("Success!", "Successfully read the product add!", "Success");
-            form.reset();
-        }
+        alert(`Product update successfull!`);
       });
   };
   return (
@@ -39,7 +41,7 @@ const ProductCreate = () => {
       <h1 className="text-3xl font-semibold text-center mb-10">
         Please Best Product Order Me!
       </h1>
-      <form onSubmit={handleProduct}>
+      <form onSubmit={handleProductUpdate}>
         <div className="flex">
           <div className="w-1/2">
             <label className="font-semibold text-lg">Name</label>
@@ -49,6 +51,7 @@ const ProductCreate = () => {
               type="text"
               name="name"
               id=""
+              defaultValue={name}
               placeholder="Product name"
               required
             />{" "}
@@ -63,6 +66,7 @@ const ProductCreate = () => {
               name="brand"
               id=""
               placeholder="Brand name"
+              defaultValue={brand}
               required
             />{" "}
             <br />
@@ -78,6 +82,7 @@ const ProductCreate = () => {
               name=""
               id="category"
               placeholder="category"
+              defaultValue={category}
               required
             />{" "}
             <br />
@@ -91,6 +96,7 @@ const ProductCreate = () => {
               name="discription"
               id=""
               placeholder="discription"
+              defaultValue={discription}
               required
             />{" "}
             <br />
@@ -106,6 +112,7 @@ const ProductCreate = () => {
               name="price"
               id=""
               placeholder="Price"
+              defaultValue={price}
               required
             />{" "}
             <br />
@@ -119,6 +126,7 @@ const ProductCreate = () => {
               name="photo"
               id=""
               placeholder="ImageURL"
+              defaultValue={photo}
               required
             />{" "}
             <br />
@@ -135,4 +143,4 @@ const ProductCreate = () => {
   );
 };
 
-export default ProductCreate;
+export default ProductUpdate;

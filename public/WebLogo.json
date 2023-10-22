@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "brand": "Toyota",
+    "image": "https://i.ibb.co/6H5c17G/97345644.webp"
+  },
+  {
+    "id": 2,
+    "brand": "Honda",
+    "image": "https://i.ibb.co/XW5HVR8/download.jpg"
+  },
+  {
+    "id": 3,
+    "brand": "Tesla",
+    "image": "https://i.ibb.co/vPcPc1r/download-1.jpg"
+  },
+  {
+    "id": 4,
+    "brand": "BMW",
+    "image": "https://i.ibb.co/cQDLTN6/images.jpg"
+  },
+  {
+    "id": 5,
+    "brand": "Ford",
+    "image": "https://i.ibb.co/LCkJTbt/Marketing-Strategy-of-Ford-3.jpg"
+  },
+  {
+    "id": 6,
+    "brand": "Mercedes-Benz",
+    "image": "https://i.ibb.co/r0gjQjT/5e19e3ab6b341.jpg"
+  }
+]
