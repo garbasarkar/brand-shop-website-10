@@ -12,7 +12,7 @@ const BanerPart = () => {
     Aos.init({ duration: 1000 });
   }, []);
   return (
-    <div className="carousel w-full mt-5 mb-20">
+    <div className="carousel w-full mt-5 mb-10">
       <div id="slide1" className="carousel-item relative w-full">
         <div className="flex flex-col md:flex-row justify-between items-center gap-5 ">
           <img data-aos="fade-up" src={silde1} className="w-full h-[80vh]" />

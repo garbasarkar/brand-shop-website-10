@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { BsFillBrightnessHighFill } from "react-icons/bs";
 import { useContext, useState } from "react";
+import logo from "/src/assets/logo/modern-shape-automotive-car-sport-logo-vector-icon-illustration-design-2G2KCHC.jpg";
 
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { AuthContext } from "../PrivateAuth/PrivateAuth";
@@ -18,6 +20,9 @@ const Header = () => {
         console.error(error);
       });
   };
+  const handleDarkMude = () => {
+    
+  }
   return (
     <nav className="flex justify-between items-center px-3 md:px-10 shadow-md py-5">
       <div
@@ -32,7 +37,7 @@ const Header = () => {
       </div>
       <div className="hidden lg:inline-flex">
         <NavLink to="/">
-          <img src="" alt="Logo" />
+          <img className="w-20" src={logo} alt="Logo" />
         </NavLink>
       </div>
       <ul
@@ -46,7 +51,7 @@ const Header = () => {
         <NavLink className="mr-6 text-lg font-semibold" to="/product">
           <li>Add Product</li>
         </NavLink>
-        <NavLink className="mr-6 text-lg font-semibold" to="/card">
+        <NavLink className="mr-6 text-lg font-semibold" to="/cards">
           <li>Add Card</li>
         </NavLink>
         {/* <div> */}
@@ -78,6 +83,7 @@ const Header = () => {
             Log Out
           </button>
         )}
+        <BsFillBrightnessHighFill onClick={handleDarkMude}></BsFillBrightnessHighFill>
         <AiOutlineShoppingCart className="text-3xl cursor-pointer"></AiOutlineShoppingCart>
       </div>
     </nav>

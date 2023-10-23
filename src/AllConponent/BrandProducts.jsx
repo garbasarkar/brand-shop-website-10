@@ -6,12 +6,12 @@ const BrandProducts = () => {
   const params = useParams();
   console.log("brand:", params);
   useEffect(() => {
-    fetch(`http://localhost:5000/brand/`)
+    fetch(`http://localhost:5000/brand`)
       .then((res) => res.json())
       .then((data) => setCarStore(data));
   }, []);
   const filters = carStore.filter(
-    (car) => car.brand.toLowerCase() == params.id.toLowerCase()
+    (car) => car.brand == params.id
   );
   console.log(filters);
   return (

@@ -9,7 +9,7 @@ import UserProduct from "../PrivateNavbar/UserProduct";
 import ProductUpdate from "../PrivateNavbar/ProductUpdate";
 import ProductDetails from "../PrivateNavbar/ProductDetails";
 import BrandProducts from "../AllConponent/BrandProducts";
-
+import AddToCart from "../AllConponent/AddToCart";
 
 const router = createBrowserRouter([
   {
@@ -46,13 +46,19 @@ const router = createBrowserRouter([
       {
         path: "/brand/:id",
         element: <ProductUpdate></ProductUpdate>,
-        loader: ({params}) => fetch(`http://localhost:5000/brand/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/brand/${params.id}`),
       },
       {
-        path: '/image/:id',
+        path: "/image/:id",
         element: <BrandProducts></BrandProducts>,
-        loader: ({params}) => fetch(`/WebLogo.json/${params.id}`)
-      }
+        loader: ({ params }) => fetch(`/WebLogo.json/${params.id}`),
+      },
+      {
+        path: "/cards",
+        element: <AddToCart></AddToCart>,
+        loader: () => fetch(`http://localhost:5000/cart`),
+      },
     ],
   },
 ]);

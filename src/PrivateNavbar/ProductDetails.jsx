@@ -1,19 +1,38 @@
+import { useContext } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
+import { AuthContext } from "../PrivateAuth/PrivateAuth";
+import swal from "sweetalert";
 
 const ProductDetails = () => {
+  const { user } = useContext(AuthContext);
+
+  // console.log(user?.email);
+
   const loadedData = useLoaderData();
   const para = useParams();
-  //   console.log(loadedData, para);
+
   const productDetails = loadedData.find(
     (singleProduct) => singleProduct._id == para.id
   );
-  // console.log(productDetails);
 
-  const handleAddToCard = (id) => {
-    console.log(id)
-  }
+  const store = { ...productDetails, email: user?.email };
+  console.log(store);
+  const handleAddToCard = () => {
+    fetch(`http://localhost:5000/cart`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(store),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        swal("Cart add successful!");
+      });
+  };
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="max-w-5xl mx-auto">
       <h1>Single Data Details!</h1>
       <div>
         <img
@@ -43,7 +62,10 @@ const ProductDetails = () => {
           <span className="font-semibold">Rating: </span>{" "}
           {productDetails.rating}
         </p>
-        <button onClick={() => handleAddToCard(productDetails._id)} className="px-5 py-2 bg-purple-600 rounded text-white mt-3">
+        <button
+          onClick={() => handleAddToCard(productDetails._id)}
+          className="px-5 py-2 bg-purple-600 rounded text-white mt-3"
+        >
           Add Product
         </button>
       </div>
