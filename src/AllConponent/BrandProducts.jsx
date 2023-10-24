@@ -12,7 +12,9 @@ const BrandProducts = () => {
   const params = useParams();
   console.log("brand:", params);
   useEffect(() => {
-    fetch(`http://localhost:5000/brand`)
+    fetch(
+      `https://assignment-10-server-site-fb9uggbgq-parthasarkar327-gmailcom.vercel.app/brand`
+    )
       .then((res) => res.json())
       .then((data) => setCarStore(data));
   }, []);

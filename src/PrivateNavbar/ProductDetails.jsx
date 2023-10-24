@@ -18,13 +18,16 @@ const ProductDetails = () => {
   const store = { ...productDetails, email: user?.email };
   console.log(store);
   const handleAddToCard = () => {
-    fetch(`http://localhost:5000/cart`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(store),
-    })
+    fetch(
+      `https://assignment-10-server-site-fb9uggbgq-parthasarkar327-gmailcom.vercel.app/cart`,
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(store),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

@@ -44,18 +44,26 @@ const router = createBrowserRouter([
             <UserProduct></UserProduct>
           </SpecialRouter>
         ),
-        loader: () => fetch(`http://localhost:5000/brand`),
+        loader: () =>
+          fetch(
+            `https://assignment-10-server-site-fb9uggbgq-parthasarkar327-gmailcom.vercel.app/brand`
+          ),
       },
       {
         path: "/brands/:id",
         element: <ProductDetails></ProductDetails>,
-        loader: () => fetch(`http://localhost:5000/brand`),
+        loader: () =>
+          fetch(
+            `https://assignment-10-server-site-fb9uggbgq-parthasarkar327-gmailcom.vercel.app/brand`
+          ),
       },
       {
         path: "/brand/:id",
         element: <ProductUpdate></ProductUpdate>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/brand/${params.id}`),
+          fetch(
+            `https://assignment-10-server-site-fb9uggbgq-parthasarkar327-gmailcom.vercel.app/brand/${params.id}`
+          ),
       },
       {
         path: "/image/:id",
@@ -73,7 +81,10 @@ const router = createBrowserRouter([
             <AddToCart></AddToCart>
           </SpecialRouter>
         ),
-        loader: () => fetch(`http://localhost:5000/cart`),
+        loader: () =>
+          fetch(
+            `https://assignment-10-server-site-fb9uggbgq-parthasarkar327-gmailcom.vercel.app/cart`
+          ),
       },
       {
         path: "/service",

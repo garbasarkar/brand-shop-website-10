@@ -20,13 +20,16 @@ const ProductCreate = () => {
       photo,
       rating,
     };
-    fetch(`http://localhost:5000/brand`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(userOrder),
-    })
+    fetch(
+      `https://assignment-10-server-site-fb9uggbgq-parthasarkar327-gmailcom.vercel.app/brand`,
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(userOrder),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

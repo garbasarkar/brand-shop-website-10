@@ -6,15 +6,18 @@ const AddToCart = () => {
   const singleCart = useLoaderData();
   const [storeCart, setStoreCart] = useState(singleCart);
   //   useEffect(() => {
-  //     fetch(`http://localhost:5000/cart`)
+  //     fetch(`https://assignment-10-server-site-fb9uggbgq-parthasarkar327-gmailcom.vercel.app/cart`)
   //       .then((res) => res.json())
   //       .then((data) => setStoreCart(data));
   //   }, []);
   //   console.log(storeCart);
   const handleCartDelete = (id) => {
-    fetch(`http://localhost:5000/cart/${id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://assignment-10-server-site-fb9uggbgq-parthasarkar327-gmailcom.vercel.app/cart/${id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
