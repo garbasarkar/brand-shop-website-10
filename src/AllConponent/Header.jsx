@@ -20,9 +20,7 @@ const Header = () => {
         console.error(error);
       });
   };
-  const handleDarkMude = () => {
-    
-  }
+  const handleDarkMude = () => {};
   return (
     <nav className="flex justify-between items-center px-3 md:px-10 shadow-md py-5">
       <div
@@ -45,23 +43,23 @@ const Header = () => {
           openNav ? "left-0 top-16" : "-top-72 left-0"
         } lg:static px-5 lg:bg-white z-10 `}
       >
-        <NavLink className="mr-6 text-lg font-semibold" to="/">
+        <NavLink className="mr-6 text-lg font-semibold" to="/home">
           <li>Home</li>
         </NavLink>
-        <NavLink className="mr-6 text-lg font-semibold" to="/product">
-          <li>Add Product</li>
+        <NavLink className="mr-6 text-lg font-semibold" to="/productAdd">
+          <li>Products</li>
         </NavLink>
         <NavLink className="mr-6 text-lg font-semibold" to="/cards">
-          <li>Add Card</li>
+          <li>My Card</li>
         </NavLink>
         {/* <div> */}
         {user && (
           <>
             <NavLink className="mr-6 text-lg font-semibold" to="/productCreate">
-              <li>Product Create</li>
+              <li>Add Product</li>
             </NavLink>
-            <NavLink className="mr-6 text-lg font-semibold" to="/productAdd">
-              <li>User Product</li>
+            <NavLink className="mr-6 text-lg font-semibold" to="/service">
+              <li>Service</li>
             </NavLink>
           </>
         )}
@@ -83,7 +81,9 @@ const Header = () => {
             Log Out
           </button>
         )}
-        <BsFillBrightnessHighFill onClick={handleDarkMude}></BsFillBrightnessHighFill>
+        <BsFillBrightnessHighFill
+          onClick={handleDarkMude}
+        ></BsFillBrightnessHighFill>
         <AiOutlineShoppingCart className="text-3xl cursor-pointer"></AiOutlineShoppingCart>
       </div>
     </nav>

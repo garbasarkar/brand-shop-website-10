@@ -10,6 +10,8 @@ import ProductUpdate from "../PrivateNavbar/ProductUpdate";
 import ProductDetails from "../PrivateNavbar/ProductDetails";
 import BrandProducts from "../AllConponent/BrandProducts";
 import AddToCart from "../AllConponent/AddToCart";
+import ServicePage from "../AllConponent/ServicePage";
+import HomePage from "../AllConponent/HomePage";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +60,15 @@ const router = createBrowserRouter([
         path: "/cards",
         element: <AddToCart></AddToCart>,
         loader: () => fetch(`http://localhost:5000/cart`),
+      },
+      {
+        path: "/service",
+        element: <ServicePage></ServicePage>,
+      },
+      {
+        path: "/home",
+        element: <HomePage></HomePage>,
+        loader: () => fetch(`/serviceCar.json`)
       },
     ],
   },

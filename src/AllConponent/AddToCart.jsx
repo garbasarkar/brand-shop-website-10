@@ -19,7 +19,6 @@ const AddToCart = () => {
       .then((data) => {
         console.log(data);
         if (data.deletedCount > 0) {
-          
           const remaining = storeCart.filter((cart) => cart._id !== id);
           swal({
             title: "Are you sure?",
@@ -49,7 +48,7 @@ const AddToCart = () => {
             key={item._id}
           >
             <div className="flex  gap-5">
-              <img className="w-32 md:w-48" src={item.photo} alt="" />
+              <img className="w-32 md:w-48 h-32" src={item.photo} alt="" />
               <div>
                 <h1>Name: {item.name}</h1>
                 <p>Brand: {item.brand}</p>

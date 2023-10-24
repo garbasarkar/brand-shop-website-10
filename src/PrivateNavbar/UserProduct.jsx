@@ -6,11 +6,11 @@ const UserProduct = () => {
   console.log(loaderData);
   return (
     <div className="max-w-6xl mx-auto">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, eaque.
-      </p>
+      <h1 className="text-3xl font-semibold mt-5 text-center mb-4">
+        <span className="text-purple-600">User All</span> Products
+      </h1>
 
-      <div className=" grid grid-cols-2 gap-5">
+      <div className=" grid grid-cols-1 md:grid-cols-2 gap-5">
         {loaderData.map((product) => (
           <div key={product._id}>
             <div className="relative flex w-full max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
@@ -18,14 +18,15 @@ const UserProduct = () => {
                 <img
                   src={product.photo}
                   alt="image"
-                  className="object-cover h-full"
+                  className="w-80 h-full rounded"
                 />
               </div>
               <div className="p-6">
-                <h6 className="block mb-4 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-pink-500 uppercase">
+                <h6 className="block mb-1 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-pink-500 uppercase">
                   {product.name}
                 </h6>
-                <p className="mb-2 ">
+                <p>{product.discription}</p>
+                <p className="mb-1 ">
                   <span className="font-semibold">Category:</span>{" "}
                   {product.category}
                 </p>
@@ -64,14 +65,21 @@ const UserProduct = () => {
                     />
                   </div>
                 </div>
-                <div className="flex justify-between items-center gap-5 mt-2">
-                  <Link to={`/brand/${product._id}`}><button  className="text-white px-5 py-2 bg-fuchsia-600 rounded ">
-                    Details
-                  </button></Link>
-                  <Link to={`/brand/${product._id}`}><button className="text-white px-5 py-2 bg-fuchsia-600 rounded">
-                    Update
-                  </button></Link>
-                </div>
+                <button className="px-5 py-2 mt-3 bg-purple-600 rounded-md text-white">
+                  Add Product
+                </button>
+                {/* <div className="flex justify-between items-center gap-5 mt-2">
+                  <Link to={`/brand/${product._id}`}>
+                    <button className="text-white px-5 py-2 bg-fuchsia-600 rounded ">
+                      Details
+                    </button>
+                  </Link>
+                  <Link to={`/brand/${product._id}`}>
+                    <button className="text-white px-5 py-2 bg-fuchsia-600 rounded">
+                      Update
+                    </button>
+                  </Link>
+                </div> */}
               </div>
             </div>
           </div>
