@@ -12,6 +12,7 @@ import BrandProducts from "../AllConponent/BrandProducts";
 import AddToCart from "../AllConponent/AddToCart";
 import ServicePage from "../AllConponent/ServicePage";
 import HomePage from "../AllConponent/HomePage";
+import SpecialRouter from "../PrivateAuth/SpecialRouter";
 
 const router = createBrowserRouter([
   {
@@ -31,13 +32,18 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register></Register>,
       },
+
       {
         path: "/productCreate",
         element: <ProductCreate></ProductCreate>,
       },
       {
         path: "/productAdd",
-        element: <UserProduct></UserProduct>,
+        element: (
+          <SpecialRouter>
+            <UserProduct></UserProduct>
+          </SpecialRouter>
+        ),
         loader: () => fetch(`http://localhost:5000/brand`),
       },
       {
@@ -53,12 +59,20 @@ const router = createBrowserRouter([
       },
       {
         path: "/image/:id",
-        element: <BrandProducts></BrandProducts>,
+        element: (
+          <SpecialRouter>
+            <BrandProducts></BrandProducts>
+          </SpecialRouter>
+        ),
         loader: ({ params }) => fetch(`/WebLogo.json/${params.id}`),
       },
       {
         path: "/cards",
-        element: <AddToCart></AddToCart>,
+        element: (
+          <SpecialRouter>
+            <AddToCart></AddToCart>
+          </SpecialRouter>
+        ),
         loader: () => fetch(`http://localhost:5000/cart`),
       },
       {
@@ -68,7 +82,7 @@ const router = createBrowserRouter([
       {
         path: "/home",
         element: <HomePage></HomePage>,
-        loader: () => fetch(`/serviceCar.json`)
+        loader: () => fetch(`/serviceCar.json`),
       },
     ],
   },

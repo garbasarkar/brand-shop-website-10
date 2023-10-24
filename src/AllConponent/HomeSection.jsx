@@ -1,3 +1,4 @@
+// import SpecialRouter from "../PrivateAuth/SpecialRouter";
 import BanerPart from "./BanerPart";
 import CarService from "./CarService";
 import KeyService from "./KeyService";
@@ -9,7 +10,9 @@ const HomeSection = () => {
   return (
     <div>
       <BanerPart></BanerPart>
-      <WebsiteLogo></WebsiteLogo>
+      {/* <SpecialRouter> */}
+        <WebsiteLogo></WebsiteLogo>
+      {/* </SpecialRouter> */}
       <KeyService></KeyService>
       <CarService></CarService>
       <News></News>

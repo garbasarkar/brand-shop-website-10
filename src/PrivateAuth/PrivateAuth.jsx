@@ -22,6 +22,16 @@ const PrivateAuth = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  const upDateProfile = (displayName, photoURL) => {
+    return updateProfile(auth.currentUser, {
+        displayName, photoURL
+    });
+  };
+
+  const logOut = () => {
+    return signOut(auth);
+  };
+
   useEffect(() => {
     const userFixed = onAuthStateChanged(auth, (currentUser) => {
       console.log("user in the auth state chance!", currentUser);
@@ -33,15 +43,6 @@ const PrivateAuth = ({ children }) => {
     };
   }, []);
 
-  const upDateProfile = (displayName, photoURL) => {
-    return updateProfile(auth.currentUser, {
-        displayName, photoURL
-    });
-  };
-
-  const logOut = () => {
-    return signOut(auth);
-  };
 
   const authInfo = { user, loading, userCreateAuth, loginUserAuth, logOut, upDateProfile };
   return (

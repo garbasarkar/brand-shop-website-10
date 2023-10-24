@@ -40,7 +40,7 @@ const Header = () => {
       </div>
       <ul
         className={`bg-gray-400 p-5 md:flex duration-1000 absolute ${
-          openNav ? "left-0 top-16" : "-top-72 left-0"
+          openNav ? "left-0 top-20" : "top-[-400px] left-0"
         } lg:static px-5 lg:bg-white z-10 `}
       >
         <NavLink className="mr-6 text-lg font-semibold" to="/home">
@@ -84,7 +84,7 @@ const Header = () => {
         <BsFillBrightnessHighFill
           onClick={handleDarkMude}
         ></BsFillBrightnessHighFill>
-        <AiOutlineShoppingCart className="text-3xl cursor-pointer"></AiOutlineShoppingCart>
+        <AiOutlineShoppingCart className="text-3xl cursor-pointer hidden md:inline-flex"></AiOutlineShoppingCart>
       </div>
     </nav>
   );

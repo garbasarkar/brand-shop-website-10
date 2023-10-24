@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import google from "/src/assets/image/google.jpg";
 import { useContext, useState } from "react";
 import { AuthContext } from "../PrivateAuth/PrivateAuth";
@@ -7,8 +7,11 @@ import auth from "../PrivateRouter/firebase.config";
 import swal from "sweetalert";
 
 const LoginPage = () => {
-  const {loginUserAuth} = useContext(AuthContext);
+  const { loginUserAuth } = useContext(AuthContext);
   const [passError, setPassError] = useState("");
+  const [errors, setErrors] = useState([]);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLoginForm = (e) => {
     e.preventDefault();
@@ -16,20 +19,23 @@ const LoginPage = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
-    
-    setPassError('');
+
+    setPassError("");
+    setErrors("");
     if (password.length < 6) {
-      setPassError("Please provide me a valid email and password!");
+      setPassError("Please provide me a valid password!");
     }
     loginUserAuth(email, password)
-    .then(result => {
-      console.log(result.user)
-      swal("Success!", "Register is complate!", "Success");
-      form.reset();
-    })
-    .catch(error => {
-      console.log(error)
-    })
+      .then((result) => {
+        console.log(result.user);
+        swal("Success!", "Register is complate!", "Success");
+        form.reset();
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        console.log(error);
+        setErrors("Please provide ma a valid input email and password!");
+      });
   };
 
   const googleLogIn = () => {
@@ -59,7 +65,7 @@ const LoginPage = () => {
             required
           />
           <br />
-          {passError && <p className="text-red-600">{passError}</p>}
+
           <input
             className="py-2 rounded border w-full mt-3 pl-2"
             type="password"
@@ -68,12 +74,14 @@ const LoginPage = () => {
             placeholder="Your Password"
             required
           />
+          {passError && <p className="text-red-600">{passError}</p>}
           <br />
           <input
             className="py-2 rounded border w-full mt-5 pl-2 bg-purple-600 text-white"
             type="submit"
             value="Login"
           />
+          {errors && <p className="text-red-600">{errors}</p>}
           <div className=" mt-3">
             <p>
               All Ready Register?{" "}

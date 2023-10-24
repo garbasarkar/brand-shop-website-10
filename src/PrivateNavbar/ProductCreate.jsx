@@ -30,9 +30,9 @@ const ProductCreate = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if(data.insertedId){
-            swal("Success!", "Successfully read the product add!", "Success");
-            form.reset();
+        if (data.insertedId) {
+          swal("Success!", "Successfully read the product add!", "Success");
+          form.reset();
         }
       });
   };
@@ -125,21 +125,20 @@ const ProductCreate = () => {
             />{" "}
             <br />
           </div>
-          
         </div>
-        <div className="w-full">
-            <label className="font-semibold text-lg">PhotoURL</label>
-            <br />
-            <input
-              className="border py-2 rounded pl-2 w-full"
-              type="text"
-              name="photo"
-              id=""
-              placeholder="ImageURL"
-              required
-            />{" "}
-            <br />
-          </div>
+        <div className="w-11/12">
+          <label className="font-semibold text-lg">PhotoURL</label>
+          <br />
+          <input
+            className="border py-2 rounded pl-2 w-full"
+            type="text"
+            name="photo"
+            id=""
+            placeholder="ImageURL"
+            required
+          />{" "}
+          <br />
+        </div>
         <div className=" mt-3">
           <div className="mx-auto flex justify-center"></div>
         </div>

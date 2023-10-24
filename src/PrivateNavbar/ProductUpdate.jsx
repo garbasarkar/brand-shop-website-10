@@ -136,7 +136,7 @@ const ProductUpdate = () => {
             <br />
           </div>
         </div>
-        <div className="w-1/2">
+        <div className="w-11/12">
           <label className="font-semibold text-lg">PhotoURL</label>
           <br />
           <input

@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import Slider from "react-slick";
+
+import sliders1 from "/src/assets/slider/images (1).jpg";
+import sliders2 from "/src/assets/slider/bmw-i5-m60-xdrive-2023.png";
+import sliders3 from "/src/assets/slider/1986-BMW-E30-M3-Legend-Series.jpg";
+import sliders4 from "/src/assets/slider/P90450318_lowRes_2-series-coup-imager.jpg";
 
 const BrandProducts = () => {
   const [carStore, setCarStore] = useState([]);
@@ -10,14 +16,35 @@ const BrandProducts = () => {
       .then((res) => res.json())
       .then((data) => setCarStore(data));
   }, []);
-  const filters = carStore.filter(
-    (car) => car.brand == params.id
-  );
+  const filters = carStore.filter((car) => car.brand == params.id);
   console.log(filters);
+  var settings = {
+    dots: true,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    pauseOnHover: true,
+  };
   return (
     <div className="max-w-6xl mx-auto mt-10">
+      <div className="mb-16">
+        <Slider {...settings}>
+          <div className="w-full h-[70vh]">
+            <img src={sliders3} alt="" />
+          </div>
+          <div className="">
+            <img className="w-full h-[70vh]" src={sliders1} alt="" />
+          </div>
+          <div>
+            <img className="w-full h-[70vh]" src={sliders2} alt="" />
+          </div>
+        </Slider>
+      </div>
+
       {
-        <div className=" grid grid-cols-2 gap-5">
+        <div className=" grid grid-cols-1 md:grid-cols-2 gap-5">
           {filters.map((product) => (
             <div key={product._id}>
               <div className="relative flex w-full max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
@@ -73,12 +100,12 @@ const BrandProducts = () => {
                   </div>
                   <div className="flex justify-between items-center gap-5 mt-2">
                     <Link to={`/brands/${product._id}`}>
-                      <button className="text-white px-5 py-2 bg-fuchsia-600 rounded ">
+                      <button className="text-white px-2 md:px-5 py-2 bg-fuchsia-600 rounded ">
                         Details
                       </button>
                     </Link>
                     <Link to={`/brand/${product._id}`}>
-                      <button className="text-white px-5 py-2 bg-fuchsia-600 rounded">
+                      <button className="text-white px-2 md:px-5 py-2 bg-fuchsia-600 rounded">
                         Update
                       </button>
                     </Link>
